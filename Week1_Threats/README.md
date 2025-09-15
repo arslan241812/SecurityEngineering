@@ -36,7 +36,11 @@ You should setup the courses virtual machine and get it ready with docker workin
 
 Write a short description of the actions you have done to fortify your defenses towards all sorts of cyber crimes, including possible servers and accounts you have. Please keep in mind not to include any specific details, such as passwords or tokens.
 
+I have taken strong measures when it comes to protecting myself from cybercrimes, my firewall is enabled always, all my banking apps and accounts are secured with facial recognition and with multi combination passwords along with email updates about every login activity. I always make sure not to open spam links or share my details with anyone and use encryption when it comes to sending some identity or confidential documents.
+
 Have you been a victim of cyber crimes and do you think you could have prevented them? For example phishing and malware attacks. What could you improve on?
+
+Still I am not a victim of cyber-crimes, but yes I have experienced quite many attacking attempts towards me. I think I need to improve the usage of sites and not saved my card details on browser. 
 
 Please keep your answer concise, bullet points are acceptable, but remember to answer atleast all mentioned topics.
 
@@ -51,7 +55,17 @@ An effort should be made to include one policy on one A4 page.
 <br>
 
 - Password policy
+-
+•	All passwords must contain minimum of 10 characters.
+•	Passwords must be a combination of uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), and special characters (e.g., !, @, #, $).
+•	Passwords must not contain regular patterns. (e.g., username, company name, common words like "Password123").
+
 - Physical access policy
+
+•	Public Areas (Lobby, Reception): Access granted to visitors after signing in.
+•	General Office Areas: Access to all employees via company-issued access card/key.
+•	Restricted Areas (Server Rooms, Data Centers, NOC): Access is strictly limited to authorized people. Access requires multi-factor authentication (e.g., access card + PIN) and must be logged. All access events must be auditable. 
+
 - Cloud usage/security policy
 - System authentication policy
 - Network perimeter security policy
@@ -76,17 +90,30 @@ Recommended to check out this very tight package on threat modelling. [The priva
 <summary>Here's the essential points you can find in the above link:</summary>
 <br>
 
-- Identify your assets. WHAT do you want to protect? 
+- Identify your assets. WHAT do you want to protect?
+  MY topmost goal is to identify critical assets, understand the threats against them, and implement measures to reduce risk, focusing on the most probable and impactful scenarios. here are my items of value that an attacker would target.
+•	Online Accounts: The primary gateway to my digital assets and identity.
+•	Email Account: The most critical asset. It is the key to password resets for all other services.
+•	Banking & Financial Apps: Direct access to my money and financial data.
+•	Social Media Accounts (Instagram, LinkedIn, Facebook) Did you find devices you did not know were in your network?
 
-- Who are your potential adversaries. WHO do you want to protect from? 
 
-- Assess the threats and likelyhoods of them for each of your assets. How LIKELY is it that you will need to protect it? 
+- Who are your potential adversaries. WHO do you want to protect from?
+  criminals, Close friends, hackers & attackers
 
-- Evaluate impact if an asset is compromised. How bad are the CONSEQUENCES if you fail? 
+- Assess the threats and likelyhoods of them for each of your assets. How LIKELY is it that you will need to protect it?
+- Many people can use my ssc for their benefits thatswhy i want to keep it secret by not having any kind of picture in my phone.
+- my banking transactions and all otps are come in email sections so its definiately my top priority to protect them. 
 
-- Cost. How much trouble and time are you willing to spend to prevent the consequences? 
+- Evaluate impact if an asset is compromised. How bad are the CONSEQUENCES if you fail?
+- I can have serious loses as All of the money is in the account and if its hacked or something i will be zero, someone can take my identity and use for any kind of criminal activity
 
-- Mitigate or mitigation plan; determine what you can do now and what to do if compromised. 
+- Cost. How much trouble and time are you willing to spend to prevent the consequences?
+- I want to bear all kind of cost to protect my digital assest and can spend sufficient time to prevent serious consiquences
+
+- Mitigate or mitigation plan; determine what you can do now and what to do if compromised.
+
+  yes, I can do many thing by applying mutiple layers of security to protect myself and my dgital assets
 
 </details>
 
@@ -104,8 +131,17 @@ Each **missing** or **incomplete** main point deducts 0.2 from this part.
 
 - Created at least 10 threats 
     - Use [STRIDE](https://learn.microsoft.com/en-us/previous-versions/commerce-server/ee823878(v=cs.20)) with approriate categories
-- Mitigated at least 5 threats 
-    - Must include how mitigated and how that works 
+- Mitigated at least 5 threats
+- spoofing
+- tampering
+- denial of service
+- information disclosure
+- elevation of previledge
+    - Must include how mitigated and how that works
+    - an entity pretends to be someone or something else to gain access or information.
+    - modification of data or components without authorization
+    - prevent an authentic user unable to use or access service or resources
+    - when someone gets more previledge then intended
 - Filled in the spots with '???'
 - Exported report as PDF and uploaded to github
     - Named yourself as the reviewer
@@ -141,6 +177,8 @@ We also recommend creating a visual representation(s) of your threat model(for e
 
 You can follow this flowchart from a previous students answer and expand on it
 ![Example Personal Threat Model](PersonalThreatModelExampleFlowchart.png)
+
+The topmost goal is to identify critical assets, understand the threats against them, and implement measures to reduce risk, focusing on the most probable and impactful scenarios. 
 
 ---
 
@@ -200,9 +238,15 @@ Save the scan with ```CTRL + S``` and take a screenshot of this topology screen 
 
 **What to return:**
 1. Did you find devices you did not know were in your network?
-2. Were there open ports which should have been closed?
-3. Did nmap find any vulnerabilities with the scripts?
-4. Screenshot of the topology of your network. You can redact device information if you want.
+2. no
+3. Were there open ports which should have been closed?
+4. no
+5. Did nmap find any vulnerabilities with the scripts?
+6. no vulnerabilities found
+7. Screenshot of the topology of your network. You can redact device information if you want.
+8. <img width="1901" height="990" alt="Screenshot 2025-09-11 223535" src="https://github.com/user-attachments/assets/908eedd7-ab0d-4bf2-bac4-9b50b340f9ec" />
+<img width="1300" height="580" alt="Screenshot 2025-09-11 223552" src="https://github.com/user-attachments/assets/41a10fa5-c1e7-4598-9bb2-bc871b91b0ef" />
+
 
 ### Task 4B: Account Security
 
@@ -212,8 +256,15 @@ This part of task 4 is to check yourself with haveibeenpwned. This should let yo
 
 **What to return:**
 1. Has your account details leaked?
-2. Screenshot of haveibeenpwned search, you can redact information if you want.
-3. Did you change passwords and/or email + password combos, that were leaked, if not, do it.
+2. yes
+3. Screenshot of haveibeenpwned search, you can redact information if you want.
+4. <img width="1715" height="807" alt="Screenshot 2025-09-11 224457" src="https://github.com/user-attachments/assets/910e7779-47e4-4eab-9011-9badc52bdf8c" />
+<img width="922" height="791" alt="Screenshot 2025-09-11 224518" src="https://github.com/user-attachments/assets/8c4080d9-78c2-46d8-9ed8-0f26bb8e0459" />
+<img width="1362" height="756" alt="Screenshot 2025-09-11 224532" src="https://github.com/user-attachments/assets/185aa5e1-7bfc-460e-8f9c-778640bbb3cd" />
+
+5. Did you change passwords and/or email + password combos, that were leaked, if not, do it.
+6. yes
 
 ### Feedback
 Be sure to give feedback on these tasks. Do you feel these to be the kind of skills you might need or want?
+excellent approach to start learning the hands on experience of security tools i want to master these tools or atleast learn more tools relevent to security, really excited about to know new tools working effeciently for security and safety.
