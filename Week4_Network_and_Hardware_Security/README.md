@@ -14,17 +14,27 @@ Task #|Points|Description|
 
 ### Task 1: Side-channels
 
-**Excluding** speculative CPU attacks such as Meltdown or Spectre, choose an example of a side-channel attack and explain the following information about it:
+**Excluding** speculative CPU attacks such as Meltdown or Spectre, choose an example of a side-channel attack and explain the following information about it: 
 
-- Brief explanation of what side-channel the attack uses and how
 
+- Brief explanation of what side-channel the attack uses and how: Power Analysis is a side-channel attack that extracts secrets from a device by statistically analyzing its power consumption during cryptographic operations. This attack exploits data dependent variations in a device's power consumption and attacker collects numerous power traces during cryptographic operations and uses statistical analysis to correlate power fluctuations with secret key guesses.
+  
 - What systems does it affect?
-
+  It affect mostly cryptographic hardware devices like smart cards, tamper-resistant chips, TPMs, and IoT device microcontrollers.
+  
 - What information is leaked via the side channel?
+  Secret cryptographic keys (e.g., for AES, DES) leaked via side channel.This can lead to full compromise of encrypted data or systems.
 
 - Is there a documented case of it being used in a real life attack?
+Documented use in real life attacks targeting general public systems is very rare and unconfirmed, as they are complex. public cases often involve white-hat hackers or hobbyists using tools like ChipWhisperer on IoT devices. However, it's considered a threat in controlled environments (e.g., cloud platforms) and against specific targets (e.g., cryptographic libraries). Its non-invasive nature makes real-world criminal use difficult to detect.
 
 - Has it been fixed? If yes, how it was fixed?
+Yes there is possiblility of mitigation but its very difficult. these includes algorithmic modifications (e.g., blinding) to randomize computations. Hardware modifications (e.g., adding noise, power filters, clock jitter) to desynchronize signals. Protocol-level fixes like limiting the number of uses for a single key.
+sources:
+https://en.wikipedia.org/wiki/Power_analysis
+https://www.twingate.com/blog/glossary/power%20analysis%20attack
+https://www.allaboutcircuits.com/technical-articles/a-basic-introduction-to-power-based-side-channel-attacks/
+https://www.microcontrollertips.com/dpa-attacks-in-the-wild-faq/
 
 You are not expected to produce an essay. Direct answers to questions above are sufficient. List sources and keep the answer concise at max 300 words not including sources.
 
@@ -37,14 +47,25 @@ You are not expected to produce an essay. Direct answers to questions above are 
 Seek information about the Slowloris Denial-of-Service attack and answer to the following questions:
 
 - How does it work?
+The Slowloris attack is a type of Denial-of-Service (DoS) attack that operates in a unique "low and slow" manner to overwhelm web servers. It exploits server connection limits by opening many HTTP connections and sending partial requests. Attacker periodically sends subsequent HTTP headers to keep connections open indefinitely and  never completing requests.
 
 - Why is it unique while compared to the other high bandwith DDoS attacks?
+  It is very unique because its a "low and slow" application layer (Layer 7) attack which requires minimal bandwidth and uses seemingly legitimate traffic, making it difficult to detect with traditional security systems.
 
 - What are the effects of the attack?
+  It effects moslty server because it exhausts server's maximum concurrent connection pool and Server becomes unable to accept new legitimate connections, resulting in Denial-of-Service. Other services and ports on the server are typically unaffected with this attack.
 
 - How can you mitigate/prevent the effects of the attack?
+  Mitigation and prevention are possible by Web Server Configuration which limit connections per IP, reduce maximum connection time and use timeouts for incomplete requests. other method is through Infrastructure by using reverse proxies, load balancers, or cloud-based DDoS protection services to buffer and filter traffic. we can also do software Updates to Keep web server software updated (e.g., use Apache's).
 
 - Are there any notable instances of this style of attack being performed?
+yes it used during the 2009 Iranian presidential election protests to disable Iranian government websites. This has been chosen for its high impact with low bandwidth consumption.
+
+sources:
+https://en.wikipedia.org/wiki/Slowloris_(cyber_attack)
+https://www.fortinet.com/resources/cyberglossary/dos-vs-ddos
+https://www.corero.com/famous-ddos-attacks/
+https://www.okta.com/identity-101/slowloris/
 
 You are not expected to produce an essay. Direct answers to questions above are sufficient. List sources and keep the answer concise at max 300 words not including sources
 
