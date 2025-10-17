@@ -19,9 +19,12 @@ It is important to understand the differences and security capabilities of the c
 Focus on giving a good overview of the security limits for the concepts.
 
 - TPM
-- Enclave
+Enclave: An enclave (e.g., Intel SGX) is a hardware-based trusted execution environment that provides confidentiality and integrity for specific pieces of code and data, even from the operating system or hypervisor. Its core security capability is memory encryption and isolation, ensuring that sensitive data is only processed in plaintext within the secure enclave. This protects against attacks from more privileged software layers. However, its security is limited to the code running inside it and does not protect the entire application or OS. Enclaves are also vulnerable to certain side-channel attacks that can infer secrets by analyzing cache access patterns or power consumption, and they rely on a complex remote attestation process to establish trust.
 - Container
-- Virtualization
+- Virtualization: Virtualization allows multiple guest operating systems to run in isolation on a single physical host. Its primary security capability is strong isolation at the hardware level between these virtual machines. A compromise of one VM should not directly affect the host or other VMs. However, its security is critically dependent on the hypervisor. A vulnerability in the hypervisor can become a single point of failure, potentially allowing an attacker to breach the isolation and compromise all VMs on the host. Virtualization does not, by itself, protect the contents of a VM from the hypervisor or a privileged system administrator, who has full access to the VM's memory and disks.
+sources:
+Intel Software Guard Extensions (SGX)
+NIST SP 800-125A: Security Recommendations for Hypervisor Deployment
 
 **Max 300 words excluding sources.**
 
@@ -81,9 +84,45 @@ Real-life cases for inspiration:
 **Minimum 500 words,  
 Maximum 4 visual representations,  
 Each visual representation is minus 50 words off the total required.**
-
 For example a report with 3 visuals requires 350 words.  
 The visuals must be useful for the report, ex. company logos do not count.
+1. Introduction
+
+This report outlines a security strategy to protect our router products from supply chain attacks. Our complex ecosystem, reliant on external partners for components, firmware, and logistics, presents multiple opportunities for adversaries to implant malicious functionality. We analyze a core supply chain of four actors. Our Company, a Component Supplier, a Third-Party Firmware Developer, and a Logistics & Storage Provider. For each, we propose concrete security actions and analyze their associated challenges.
+2. Threat Analysis and Proposed Mitigations:
+2.1. Component Supplier: Risk of Hardware Tampering
+The primary risk is the implantation of hardware backdoors or counterfeit chips.
+
+Concrete Action: Hardware Root of Trust with TPM.
+We will mandate that all supplied System-on-Chips (SoCs) integrate a Hardware Trusted Platform Module (TPM) 2.0. This TPM will be pre-provisioned with a unique, manufacturer-injected endorsement key. This creates a secure root for our Secure Boot process, ensuring that only software cryptographically signed by our company can load.
+Reasoning:  A hardware-based root of trust is resilient to software-level attacks. It prevents malicious firmware from a compromised supplier from persisting on the device, as the boot sequence would fail verification.
+Potential Problems & Actions:
+Problem: Increased component cost and potential supplier resistance due to added complexity.
+Action: We must integrate TPM cost into our sourcing budget and establish stringent security requirements as a condition in all supplier contracts, backed by regular audits.
+2.2. Third-Party Firmware Developer: Risk of Code Compromise
+Inspired by the SolarWinds attack, a compromised firmware developer could introduce backdoors into low-level code.
+Concrete Action: Software Bill of Materials (SBOM) and Automated Scanning.
+We will contractually obligate the firmware developer to provide a detailed, machine-readable SBOM for every code release. This SBOM will be ingested into an automated pipeline that scans for known vulnerabilities (CVEs) and unauthorized dependencies. Furthermore, we will implement EDR (Endpoint Detection and Response) on developer workstations provided by our company to monitor for malicious activity.
+Reasoning: An SBOM provides transparency, turning the software "ingredients" from a black box into an auditable list. EDR helps detect attacker presence on development systems before malicious code is committed.
+Potential Problems & Actions:
+Problem: Developers may resist EDR on privacy grounds, and managing SBOMs requires dedicated tooling and expertise.
+Action: We must create a clear acceptable use policy and segregate development activities from personal use. We will need to invest in and staff a dedicated product security team to manage the SBOM pipeline.
+2.3. Logistics & Storage Provider: Risk of Physical Tampering
+Malicious actors within the logistics chain could physically implant devices or tamper with firmware during storage or transit.
+Concrete Action: Tamper-Evident Sealing and Secure Chain of Custody.
+All finished router boxes will be sealed with tamper-evident labels. Furthermore, we will implement a secure digital chain of custody log. Before shipment from our facility, a unique cryptographic hash of the device's firmware will be recorded. Upon delivery to the customer or distribution center, this hash can be verified (e.g., via a secure web portal) to confirm integrity.
+Reasoning: Tamper-evident seal provide a visible deterrent and detection mechanism. Cryptographic hashing provides an unforgeable digital proof of integrity, making unauthorized modifications detectable.
+Potential Problems & Actions:
+Problem: This adds a manual verification step for customers/distributors, who may not perform it. The chain-of-custody system requires integration with our logistics partners' IT systems.
+Action: We must design a user-friendly integrity verification process and promote it as a key security feature, especially for B2B clients. Contractual agreements with logistics partners must mandate their participation in the chain-of-custody logging system.
+2.4. CorNet(our company): Risk from Internal Threats
+Insider threats, whether malicious or compromised accounts, pose a significant risk to our build and update servers.
+Concrete Action: Multi-Layered Monitoring with UBA and NDR.
+We will deploy UBA (User Behavior Analytics) on our internal identity and source code management systems to detect anomalous activity, such as a developer accessing unrelated projects. Simultaneously, we will implement NDR (Network Detection and Response) on the network segments housing our build and update servers to identify unusual data flows or command-and-control beaconing that might indicate a compromise.
+Reasoning: A defense-in-depth approach is critical. UBA detects threats based on identity-centric anomalies, while NDR detects threats based on network behavior, providing overlapping layers of security.
+Problem: Potential for high false positives and significant operational overhead to tune and monitor these systems. Employee privacy concerns must be addressed.
+Action: Requires investment in a 24/7 Security Operations Center (SOC) or a managed security service provider to effectively operationalize these tools. Clear internal policies on monitoring are essential.
+
 
 ---
 
@@ -120,7 +159,7 @@ Depending on the type of Dockerfile you are linting and which tool you are using
 Not all problems indicated by the tool have to be fixed, and not all warnings should be fixed blindly, but of course you should aim for fixing everything you can, while not breaking the program.
 
 ### What to return:
-- What linter you used
+- What linter you used : Hadolint cli version
 - The dockerfile, before and after fixes
 - Screenshot **or** .md file of the linter before and after fixes
 
