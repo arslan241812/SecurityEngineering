@@ -17,14 +17,22 @@ Task #|Points|Description|
 **Excluding** speculative CPU attacks such as Meltdown or Spectre, choose an example of a side-channel attack and explain the following information about it:
 
 - Brief explanation of what side-channel the attack uses and how
+Answer:- A side channel is where information leaks accidentally via some medium that was not designed or intended for communication; a covert channel is where the leak is deliberate. Side channel attacks are everywhere.
 
 - What systems does it affect?
+Answer: There are conducted or radiated electromagnetic signals, which can compromise information locally and occasionally at longer ranges. These ‘Tempest’ attacks led NATO governments to spend billions of dollars a year on shielding equipment, starting in the 1960s. After the end of the Cold War, people started to realise that there had usually been nobody listening.
 
 - What information is leaked via the side channel?
+Answer:- side channels leak data between tasks on a single device, or between devices that are closely coupled; these can exploit both power and timing information, and also contention for shared system resources.
 
 - Is there a documented case of it being used in a real life attack?
+Answer:- There are attacks that exploit shared local physical resources, such as when a phone listens to keystrokes entered on a nearby keyboard, or indeed on a keyboard on its own touch screen whether that sensing is done with microphones, the accelerometer and gyro, or even the camera. Another example is that a laser pulse can create a click on a microphone, so a voice command can be given to a home assistant through a window. So far, none of the side-channel attacks on phones and other IoT devices has scaled up to have major impact but there are ever more of them.
 
 - Has it been fixed? If yes, how it was fixed?
+Answer: Yes, Spectre has been partially mitigated through a combination of software patches, firmware updates, and hardware changes, but it is not completely "fixed" due to the fundamental nature of speculative execution.
+sources:
+https://en.wikipedia.org/wiki/
+https://www.cl.cam.ac.uk/archive/rja14/Papers/SEv3-ch19-7sep.pdf
 
 You are not expected to produce an essay. Direct answers to questions above are sufficient. List sources and keep the answer concise at max 300 words not including sources.
 
@@ -37,14 +45,19 @@ You are not expected to produce an essay. Direct answers to questions above are 
 Seek information about the Slowloris Denial-of-Service attack and answer to the following questions:
 
 - How does it work?
+Answer:- The attacker sends partial HTTP requests, but never completing the request. This slowly consumes all available connections, making the server unable to respond.
 
 - Why is it unique while compared to the other high bandwith DDoS attacks?
+Answer: Its uniqueness lies in its extremely low bandwidth requirement. Unlike high-bandwidth attacks that flood a network with massive data volumes, a single machine with a slow internet connection can execute a Slow Loris attack. It targets server resources rather than network capacity.
 
 - What are the effects of the attack?
+- Answer: The effect of the attack is that legitimate users are unable to access the targeted website.
 
 - How can you mitigate/prevent the effects of the attack?
+Answer: we can mitigate this by using services like Cloudflare or hardware from F5, limiting the number of connections from a single IP address, and reducing the connection timeout.
 
 - Are there any notable instances of this style of attack being performed?
+Answer: The technique was used in the 2009 Iranian presidential election protests to target Iranian government websites.
 
 You are not expected to produce an essay. Direct answers to questions above are sufficient. List sources and keep the answer concise at max 300 words not including sources
 
@@ -59,6 +72,14 @@ BurpSuite Community Edition
 Docker Engine/Desktop  
 Damn Vulnerable Web Application (DVWA)  
 thc-hydra
+<img width="1092" height="724" alt="Screenshot 2025-09-27 134906" src="https://github.com/user-attachments/assets/bde592ad-5cf3-4771-adae-650562bf895c" />
+<img width="1878" height="992" alt="Screenshot 2025-10-03 005114" src="https://github.com/user-attachments/assets/5c933fa0-e103-47d9-a997-5651891af760" />
+<img width="1842" height="973" alt="Screenshot 2025-10-03 005606" src="https://github.com/user-attachments/assets/1f0b6ccc-24c1-48e3-8ca9-6c50179f83ed" />
+<img width="1912" height="1002" alt="Screenshot 2025-10-03 005838" src="https://github.com/user-attachments/assets/c1332f72-8dcc-4a8b-b7b3-9c702f0462cc" />
+<img width="1850" height="974" alt="Screenshot 2025-10-03 010001" src="https://github.com/user-attachments/assets/b3e06ee4-9a6e-4cff-abca-698c39bffc30" />
+<img width="1667" height="828" alt="Screenshot 2025-10-03 011235" src="https://github.com/user-attachments/assets/5826caab-bae0-43f3-a9e1-447665618304" />
+<img width="1491" height="972" alt="Screenshot 2025-10-03 012422" src="https://github.com/user-attachments/assets/89bd4cd9-56e5-4a99-b3cb-02ea27e4b1a5" />
+<img width="1913" height="1016" alt="Screenshot 2025-10-03 012730" src="https://github.com/user-attachments/assets/8e87d379-b377-4e67-b1bd-62b2c433e8d4" />
 
 
 **Returnable file**  
